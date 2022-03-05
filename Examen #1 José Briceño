@@ -1,0 +1,107 @@
+#include<iostream>
+#include<math.h>
+//Variables
+float a,b,c,x1,x2;  
+float PI= 3.14,r=0;  
+float Xo, Vot, a2,t; 
+
+//Prototipos
+void pedirValor_ABC();
+float funPolinomio_x1(float a, float b, float c);
+float funPolinomio_x2(float a, float b, float c);
+void pedirRadio();
+float funVolumen_Esfera(float r);
+void pedirDatos_MRUV();
+float funMRUV(float Xo, float Vot, float a, float t);
+
+/////////////////////////////////////////////////////////////////
+int main(){
+    int opcion;
+
+    printf("-----Menu de opciones----- \n");
+    printf("\1. Calcular la raices de un polinomio de 2do Grado \n");
+    printf("2. Calular el volumen de una esfera \n");
+    printf("3. Calcular el desplazamiendo de un movil en MRUV \n");
+    printf("4. Salir \n");
+    printf("\nQue opcion desea ejecutar?: ");
+        scanf("%i",&opcion);
+
+    switch(opcion){
+            case 1: 
+                pedirValor_ABC();
+                printf("El Valor De La Raiz X1 Es De: %.2f",funPolinomio_x1(a,b,c));
+                printf("\nEl Valor De La Raiz X2 Es De: %.2f",funPolinomio_x2(a,b,c));
+            break;
+
+            case 2:
+                pedirRadio();
+                printf("\nEl Del Volumen De Una Esfera Es De: %.2f",funVolumen_Esfera(r));
+            break;
+
+             case 3:
+                pedirDatos_MRUV();
+                printf("El Desplazamiento De Un Movil En MRUV Es De: %.2f",funMRUV(Xo,Vot,a,t));
+            break;
+
+            case 4: break;
+
+            default: 
+                printf("Ingrese una opcion valida, Para poder ejecutar");
+    }
+    return 0;
+}
+
+//Definir los Prototipos
+//----------//----------//---Caso #1---//----------//----------//
+void pedirValor_ABC(){
+    printf("Digite el valor de a: ");
+        scanf("%f",&a);
+    printf("Digite el valor de b: ");
+        scanf("%f",&b);
+    printf("Digite el valor de c: ");
+        scanf("%f",&c);
+}
+float funPolinomio_x1(float a, float b, float c){
+    float raiz1=0;
+        raiz1 = (-b+sqrt(b*b-4*a*c))/(2*a);
+    return raiz1;
+}
+
+float funPolinomio_x2(float a, float b, float c){
+    float raiz2=0;
+        raiz2 = (-b-sqrt(b*b-4*a*c))/(2*a);
+    return raiz2;
+}
+//////////////////////////////////////////////////////////////////
+//----------//----------//---Caso #2---//----------//----------//
+void pedirRadio(){
+    printf("Digite el valor del Radio: ");
+        scanf("%f",&r);
+}
+float funVolumen_Esfera(float r){
+    float volumen = 0;
+    if(r>0){
+        volumen = ((1.3333333333)*(PI*pow(r,3)));
+    }
+    else{
+        printf("El valor que digito no es valido,'Por lo tanto'");
+    }
+    return volumen;
+}
+//////////////////////////////////////////////////////////////////
+//----------//----------//---Caso #3---//----------//----------//
+void pedirDatos_MRUV(){
+    printf("Digite el valor de Xo: ");
+        scanf("%f",&Xo);
+    printf("Digite el valor de Vot: ");
+        scanf("%f",&Vot);
+    printf("Digite el valor de a: ");
+        scanf("%f",&a2);
+    printf("Digite el valor de t: ");
+        scanf("%f",&t);
+}
+float funMRUV(float Xo, float Vot, float a, float t){
+    float Xf=0;
+        Xf = (Xo + Vot + (a2*(pow(t,2))/2));
+    return Xf;
+}
